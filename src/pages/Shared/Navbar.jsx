@@ -1,6 +1,8 @@
 import React, { use } from 'react';
 import { NavLink } from 'react-router';
 import { AuthContext } from '../../contexts/AuthContext/AuthContext';
+import ThemeToggle from './ThemeToggle';
+import { motion } from "motion/react";
 
 const Navbar = () => {
 
@@ -19,7 +21,7 @@ const Navbar = () => {
         <li><a>Item 3</a></li>
     </>
     return (
-        <div className="navbar bg-base-100 shadow-sm">
+        <div className="navbar bg-[#0D9488] shadow-sm">
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -31,7 +33,16 @@ const Navbar = () => {
        
       </ul>
     </div>
-    <a className="btn btn-ghost text-xl">daisyUI</a>
+    <div className='flex items-center gap-3'>
+    <img className='w-[5%]' src='https://i.ibb.co/YFb1Xj41/Screenshot-2025-06-04-211718-removebg-preview.pnghttps://i.ibb.co/WWkdB1Rx/Screenshot-2025-05-20-012215.png' alt=""/>
+    <h1 className='font-bold'><motion.span
+                            animate={
+                                {
+                                    color: ['#ff5733', '#33ff33', '#FFA55D'],
+                                    transition: { duration: 2, repeat: Infinity }
+                                }}
+                        >HELP</motion.span>ORA</h1>
+    </div>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
@@ -46,6 +57,7 @@ const Navbar = () => {
     <NavLink className="btn" to="/register">Register</NavLink>
         </>
     }
+    <ThemeToggle></ThemeToggle>
   </div>
 </div>
     );
