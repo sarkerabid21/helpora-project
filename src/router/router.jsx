@@ -5,6 +5,13 @@ import RootLayout from "../layouts/RootLayout";
 import Home from "../pages/Home/Home";
 import register from "../pages/Register/register";
 import SignIn from "../pages/SignIn/SignIn";
+import VolunteerDetails from "../pages/VolunteerDetails.jsx/VolunteerDetails";
+import PrivateRoute from "../routes/PrivateRoute";
+import ApplyVolunteer from "../pages/Shared/ApplyVolunteer";
+import AllVolNeeds from "../pages/Home/AllVolNeeds";
+import Register from "../pages/Register/register";
+import MyRequestPage from "../pages/MyRequestPage/MyRequestPage";
+import AddNeeds from "../pages/Home/AddNeeds";
 
 
 const router = createBrowserRouter([
@@ -17,8 +24,43 @@ const router = createBrowserRouter([
             Component: Home
         },
         {
+            path: '/volunteer/:id',
+            Component: VolunteerDetails,
+            loader: ({params}) => fetch(`http://localhost:5000/volunteer/${params.id}`)
+        },
+        
+        {
+          path: '/allNeeds',
+          loader: async () => {
+           const res = await fetch('http://localhost:5000/volunteer');
+            return res.json();
+},
+          element: <PrivateRoute>
+            <AllVolNeeds></AllVolNeeds>
+          </PrivateRoute>
+        },
+
+        {
+          path: '/applyVolunteer/:id',
+          element: <PrivateRoute>
+            <ApplyVolunteer></ApplyVolunteer>
+          </PrivateRoute>
+        },
+        {
+            path: '/myRequests',
+            element: <PrivateRoute>
+              <MyRequestPage></MyRequestPage>
+            </PrivateRoute>
+        },
+        {
+            path: '/addNeeds',
+            element: <PrivateRoute>
+              <AddNeeds></AddNeeds>
+            </PrivateRoute>
+        },
+        {
             path: '/register',
-            Component: register
+            Component: Register
 
         },
         {

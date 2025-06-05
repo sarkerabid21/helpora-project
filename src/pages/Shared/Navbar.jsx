@@ -18,7 +18,30 @@ const Navbar = () => {
 
     const links = <>
      <li><NavLink to="/">Home</NavLink></li>
-        <li><a>Item 3</a></li>
+     
+     {
+      user && <>
+      <li><NavLink to="/addNeeds">Add Needs</NavLink></li>
+      <li><NavLink to="/allNeeds">All Needs</NavLink></li>
+      </>
+     }
+     {
+      user && <>
+      <div className="dropdown dropdown-start">
+  <div tabIndex={0}  className="btn shadow-none h-8 bg-teal-600 border-0 m-1">My Posts</div>
+  <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+    <li><NavLink to="/myRequests">My Volunteer Request Post</NavLink></li>
+    <li><NavLink to="">My volunteer need post
+</NavLink></li>
+    
+  </ul>
+</div>
+
+      
+      </>
+     }
+     
+        
     </>
     return (
         <div className="navbar bg-[#0D9488] shadow-sm">
