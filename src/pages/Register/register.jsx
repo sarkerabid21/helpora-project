@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
-import registerLottie from '../../assets/Animation - 1748278592850.json';
+
 import Lottie from 'lottie-react';
 import { AuthContext } from '../../contexts/AuthContext/AuthContext';
 import SocialLogin from '../Shared/SocialLogin';
 import { updateProfile } from 'firebase/auth';
-import { auth } from '../../firebase/firebase.init'; // ✅ auth import করা লাগবে
+import { auth } from '../../firebase/firebase.init'; 
 
 const Register = () => {
   const { createUser } = useContext(AuthContext);
@@ -44,10 +44,11 @@ const Register = () => {
   };
 
   return (
-    <div className="hero bg-base-200 min-h-screen">
+    <div className="hero  min-h-screen">
+      <img className='min-h-screen' src="https://i.ibb.co/HDjMyRhW/8767079.jpg" alt=""/>
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="text-center lg:text-left">
-          <Lottie style={{ width: '300px' }} animationData={registerLottie} loop={true}></Lottie>
+         
         </div>
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
           <div className="card-body">

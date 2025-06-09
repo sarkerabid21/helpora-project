@@ -125,9 +125,15 @@ const ApplyVolunteer = () => {
           className="textarea textarea-bordered w-full"
         />
 
-        <button type="submit" className="btn btn-primary w-full mt-4">
-          Request
-        </button>
+         {post.volunteersNeeded <= 0 ? (
+  <button disabled className="btn btn-disabled w-full mt-4">
+    No More Volunteers Needed
+  </button>
+) : (
+  <button type="submit" className="btn btn-primary w-full mt-4">
+    Request
+  </button>
+)}
       </fieldset>
     </form>
   );

@@ -31,13 +31,18 @@ const VolunteerDetails = () => {
         <p><strong>Email:</strong> {organizerEmail}</p>
       </div>
 
-      <Link to={`/applyVolunteer/${_id}`}>
-      <button
-        className="mt-6 px-5 py-2 bg-blue-600 text-white rounded cursor-pointer"
-      >
-        Be a Volunteer
-      </button>
-      </Link>
+     {volunteersNeeded === 0 ? (
+  <p className="mt-6 text-red-400 font-bold text-lg"> Sorry, no more volunteers needed for this post.</p>
+) : (
+  <Link to={`/applyVolunteer/${_id}`}>
+    <button
+      className="mt-6 px-5 py-2 bg-blue-600 text-white rounded cursor-pointer"
+    >
+      Be a Volunteer
+    </button>
+  </Link>
+)}
+
 
       
     </div>

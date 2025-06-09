@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../contexts/AuthContext/AuthContext';
 import Lottie from 'lottie-react';
-import signInLottie from '../../assets/Animation - 1748917608263.json';
+import signInLottie from '../../assets/Animation - 1749226843029.json';
 import SocialLogin from '../Shared/SocialLogin';
 import { useLocation, useNavigate } from 'react-router';
 
@@ -32,23 +32,23 @@ const SignIn = () => {
 
   return (
     <div className="hero bg-base-200 min-h-screen">
-      <div className="hero-content flex-col lg:flex-row-reverse">
+      <div className="hero-content flex-col bg-teal-600 rounded-2xl lg:flex-row-reverse">
         <div className="text-center lg:text-left">
           <Lottie style={{ width: '300px' }} animationData={signInLottie} loop={true} />
         </div>
-        <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+        <div className="card  w-full max-w-sm shrink-0 bg-teal-950">
           <div className="card-body">
-            <h1 className="text-5xl font-bold">Sign In</h1>
+            <h1 className="text-5xl text-white font-bold">Sign In</h1>
             <form onSubmit={handleSignIn}>
               <fieldset className="space-y-2">
-                <label className="label">Email</label>
+                <label className="text-white label">Email</label>
                 <input name="email" type="email" className="input input-bordered w-full" placeholder="Email" required />
                 
-                <label className="label">Password</label>
+                <label className="text-white label">Password</label>
                 <input name="password" type="password" className="input input-bordered w-full" placeholder="Password" required />
                 
                 <div>
-                  <a href="#" className="link link-hover text-sm">Forgot password?</a>
+                  <a  className="text-white link link-hover text-sm">Forgot password?</a>
                 </div>
                 
                 <button className="btn btn-neutral mt-4 w-full">Sign in</button>

@@ -10,13 +10,13 @@ const MyRequestLists = ({ myRequestPromise }) => {
   };
 
   return (
-    <div className='my-6'>
+    <div className='my-6 '>
       <h3 className='text-3xl text-center font-bold mb-10'>Apply for Volunteer Jobs: {applications.length}</h3>
       {
         applications.length === 0
           ? <p className='text-center text-red-500'>You haven’t applied for any volunteer request yet.</p>
           : (
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto border border-emerald-500 w-[60%] mx-auto">
               <table className="table">
                 <thead>
                   <tr>

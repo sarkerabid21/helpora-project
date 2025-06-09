@@ -12,6 +12,9 @@ import AllVolNeeds from "../pages/Home/AllVolNeeds";
 import Register from "../pages/Register/register";
 import MyRequestPage from "../pages/MyRequestPage/MyRequestPage";
 import AddNeeds from "../pages/Home/AddNeeds";
+import MyPosts from "../pages/MyPosts/MyPosts";
+import UpdatePost from "../pages/Shared/UpdatePost";
+import Error from "../pages/Shared/Error";
 
 
 const router = createBrowserRouter([
@@ -53,10 +56,23 @@ const router = createBrowserRouter([
             </PrivateRoute>
         },
         {
+            path: '/myPosts',
+            element: <PrivateRoute>
+              <MyPosts></MyPosts>
+            </PrivateRoute>
+        },
+        {
             path: '/addNeeds',
             element: <PrivateRoute>
               <AddNeeds></AddNeeds>
             </PrivateRoute>
+        },
+        {
+           path: '/update/:id',
+           element: <PrivateRoute>
+              <UpdatePost></UpdatePost>
+            </PrivateRoute>
+
         },
         {
             path: '/register',
@@ -67,7 +83,11 @@ const router = createBrowserRouter([
             path: '/signin',
             Component: SignIn
 
-        }
+        },
+        {
+            path:"/*",
+           Component: Error
+        },
     ]
   },
 ]);

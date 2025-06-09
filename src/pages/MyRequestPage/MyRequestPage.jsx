@@ -8,7 +8,7 @@ const MyRequestPage = () => {
 
   return (
     <div>
-      <Suspense fallback={'loading'}>
+      <Suspense fallback={<span className="loading loading-dots loading-lg"></span>}>
         <MyRequestLists myRequestPromise={myRequestPromise(user.email)} />
       </Suspense>
     </div>

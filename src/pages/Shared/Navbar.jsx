@@ -3,8 +3,11 @@ import { NavLink } from 'react-router';
 import { AuthContext } from '../../contexts/AuthContext/AuthContext';
 import ThemeToggle from './ThemeToggle';
 import { motion } from "motion/react";
+import { TbLayoutListFilled, TbLayoutDashboardFilled } from "react-icons/tb";
 
-const Navbar = () => {
+const Navbar = ({ toggleLayout, isTableLayout, currentPath }) => {
+
+  const showLayoutToggle = currentPath === '/allNeeds';
 
     const {user, signOutUser} = use(AuthContext)
     const handleSignOut = () =>{
@@ -31,7 +34,7 @@ const Navbar = () => {
   <div tabIndex={0}  className="btn shadow-none h-8 bg-teal-600 border-0 m-1">My Posts</div>
   <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
     <li><NavLink to="/myRequests">My Volunteer Request Post</NavLink></li>
-    <li><NavLink to="">My volunteer need post
+    <li><NavLink to="/myPosts">My volunteer need post
 </NavLink></li>
     
   </ul>
@@ -72,7 +75,8 @@ const Navbar = () => {
       {links}
     </ul>
   </div>
-  <div className="navbar-end">
+  
+  <div className="navbar-end flex items-center gap-3">
     {
         user ? <button onClick={handleSignOut} className='btn'>Sign Out</button> :
         <>
@@ -81,6 +85,15 @@ const Navbar = () => {
         </>
     }
     <ThemeToggle></ThemeToggle>
+
+      
+        {showLayoutToggle && (
+          <button  onClick={toggleLayout} className=" text-2xl cursor-pointer">
+            {isTableLayout ? <TbLayoutListFilled /> : <TbLayoutDashboardFilled />}
+          </button>
+        )}
+
+       
   </div>
 </div>
     );

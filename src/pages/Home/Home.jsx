@@ -11,7 +11,7 @@ const Home = () => {
     return (
         <div className='bg-[#feefc7] min-h-screen'>
             <Banner></Banner>
-            <Suspense fallback={'loading'}>
+            <Suspense fallback={<span className="loading loading-dots loading-lg"></span>}>
                 <VolNeeds volunterPromise={volunterPromise}></VolNeeds>
             </Suspense>
             <Success></Success>
