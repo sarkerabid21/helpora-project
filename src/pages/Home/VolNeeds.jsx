@@ -13,7 +13,7 @@ const VolNeeds = ({volunterPromise}) => {
         <div className='bg-teal-500 '>
            
             <h1 className='font-extrabold text-4xl text-center pt-10'>Volunteer Needs Urgent</h1>
-            <div className='grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-6 lg:ml-16 py-16'>
+            <div className='grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-6 lg:ml-16 py-16 '>
                 {
                     sortedJobs.map(job => <VolunteerCard key={job._id}job={job}></VolunteerCard>)
                 }

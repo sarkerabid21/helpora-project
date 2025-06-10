@@ -21,7 +21,7 @@ const VolunteerCard = ({ job }) => {
   };
 
   return (
-    <div className="card bg-base-100 w-96 shadow-sm">
+    <div className="card bg-base-100 lg:w-96 shadow-sm  w-86 mx-auto">
       <figure>
         <img src={thumbnail} alt="Post Thumbnail" />
       </figure>

@@ -1,11 +1,11 @@
 import React from 'react';
-
+import { motion } from "motion/react";
 
 const Success = () => {
     return (
          <div className="hero bg-teal-700 ">
   <div className="hero-content flex-col lg:flex-row-reverse">
-   <div className='flex-1'>
+   <div className='flex-1 hidden lg:block'>
      <motion.img className='rounded-t-4xl border-l-16 border-b-16 rounded-br-4xl border-blue-500'
      animate={{y:[80,120,80]}}
      transition={{duration:4, repeat: Infinity}}

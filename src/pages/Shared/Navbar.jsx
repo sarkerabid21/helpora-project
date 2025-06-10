@@ -56,6 +56,30 @@ const Navbar = ({ toggleLayout, isTableLayout, currentPath }) => {
       <ul
         tabIndex={0}
         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+       <li><NavLink to="/">Home</NavLink></li>
+     
+     {
+      user && <>
+      <li><NavLink to="/addNeeds">Add Needs</NavLink></li>
+      <li><NavLink to="/allNeeds">All Needs</NavLink></li>
+      </>
+     }
+     {
+      user && <>
+      <div className="dropdown dropdown-start">
+  <div tabIndex={0}  className="btn shadow-none h-8  border-0 m-1">My Posts</div>
+  <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+    <li><NavLink to="/myRequests">My Volunteer Request Post</NavLink></li>
+    <li><NavLink to="/myPosts">My volunteer need post
+</NavLink></li>
+    
+  </ul>
+</div>
+
+      
+      </>
+     }
+     
        
       </ul>
     </div>
