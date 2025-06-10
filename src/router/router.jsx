@@ -3,7 +3,7 @@ import {
 } from "react-router";
 import RootLayout from "../layouts/RootLayout";
 import Home from "../pages/Home/Home";
-import register from "../pages/Register/register";
+
 import SignIn from "../pages/SignIn/SignIn";
 import VolunteerDetails from "../pages/VolunteerDetails.jsx/VolunteerDetails";
 import PrivateRoute from "../routes/PrivateRoute";

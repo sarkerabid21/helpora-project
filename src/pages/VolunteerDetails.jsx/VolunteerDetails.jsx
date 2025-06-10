@@ -1,9 +1,7 @@
-import React, { use, useState } from 'react';
+// import React, { use, useState } from 'react';
 
-// import Swal from 'sweetalert2';
 import { Link, useLoaderData } from 'react-router';
-// import { div } from 'motion/react-client';
-// import { AuthContext } from '../../contexts/AuthContext/AuthContext';
+
 
 const VolunteerDetails = () => {
   const {

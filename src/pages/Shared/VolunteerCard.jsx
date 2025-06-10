@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 const VolunteerCard = ({ job }) => {
   const { title, thumbnail, category, deadline, _id, volunteersNeeded } = job;
 
-  // 🔔 Handler for the button
+  
   const handleViewDetails = () => {
     if (volunteersNeeded === 0) {
       Swal.fire({
@@ -16,7 +16,7 @@ const VolunteerCard = ({ job }) => {
         
       });
     } else {
-      window.location.href = `/volunteer/${_id}`; // Use navigate() if using react-router-dom v6
+      window.location.href = `/volunteer/${_id}`; 
     }
   };
 
