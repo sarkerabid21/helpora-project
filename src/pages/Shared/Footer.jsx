@@ -34,7 +34,7 @@ const Footer = () => {
           <div>
             <h3 className="text-xl font-bold text-white mb-4">Contact Info</h3>
             <p className="text-sm">
-              123 Volunteer Lane, City, Country
+              Dhaka, Bangladesh
             </p>
             <p className="text-sm mt-2">
               Email: <a >info@helpora.com</a>
@@ -85,7 +85,7 @@ const Footer = () => {
 
       
         <div className="border-t border-gray-700 mt-8 pt-8 text-center text-sm">
-          <p>&copy; {new Date().getFullYear()} Your Volunteer Organization. All rights reserved.</p>
+          <p>&copy; 2025 HELPORA. All rights reserved.</p>
         </div>
       </div>
     </footer>

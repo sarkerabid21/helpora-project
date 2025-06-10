@@ -6,7 +6,7 @@ import Companies from './Companies';
 
 const Home = () => {
 
-    const volunterPromise = fetch('http://localhost:5000/volunteer')
+    const volunterPromise = fetch('https://volunteer-servers.vercel.app/volunteer')
     .then(res => res.json())
 
     return (

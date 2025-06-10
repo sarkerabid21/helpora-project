@@ -11,7 +11,7 @@ const AllVolNeeds = () => {
   const [searchText, setSearchText] = useState('');
 
   useEffect(() => {
-    fetch(`http://localhost:5000/volunteer?search=${searchText}`)
+    fetch(`https://volunteer-servers.vercel.app/volunteer?search=${searchText}`)
       .then(res => res.json())
       .then(data => setVolunteerNeeds(data));
   }, [searchText]);
