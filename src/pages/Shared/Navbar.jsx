@@ -47,7 +47,7 @@ const Navbar = ({ toggleLayout, isTableLayout, currentPath }) => {
         
     </>
     return (
-        <div className="navbar bg-[#0D9488] shadow-sm">
+        <div className="navbar  bg-[#0D9488] shadow-sm ">
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

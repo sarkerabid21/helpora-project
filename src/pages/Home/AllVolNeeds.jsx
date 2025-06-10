@@ -17,8 +17,10 @@ const AllVolNeeds = () => {
   }, [searchText]);
 
   return (
-    <div className='bg-green-300 min-h-screen px-4 lg:px-16 py-20'>
-      <h1 className='text-xl lg:text-4xl font-bold mb-6 text-center'>Volunteer need posts page</h1>
+    <div 
+    className="px-4 lg:px-16 py-20 bg-cover  bg-center bg-fixed"
+      style={{ backgroundImage: 'url("https://i.ibb.co/bRB2f1Mz/splash-turquoise-paint.jpg")' }}>
+      <h1 className='text-xl lg:text-4xl font-bold my-6 text-center'>Volunteer need posts page</h1>
 
       <div className='flex justify-center mb-8'>
         <input
