@@ -1,6 +1,6 @@
 import React from 'react';
-import { motion } from "motion/react"
-// import { div } from 'motion/react-client';
+
+
 
 const Banner = () => {
     return (

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
-// import useAuth from '../../hooks/useAuth';
+
 import Swal from 'sweetalert2';
 import useAuth from '../../hooks/useAuth';
 
@@ -43,7 +43,7 @@ const ApplyVolunteer = () => {
   };
 
   try {
-    // 1️⃣ Store request data in new collection
+    
     const res = await fetch('http://localhost:5000/volunteer/volunteer-requests', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -53,7 +53,7 @@ const ApplyVolunteer = () => {
     const result = await res.json();
 
     if (result.success) {
-      // 2️⃣ Decrease the volunteersNeeded count for that post
+     
       await fetch(`http://localhost:5000/volunteer/volunteer-posts/${id}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
@@ -78,7 +78,7 @@ const ApplyVolunteer = () => {
       <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-full max-w-2xl border p-6">
         <legend className="fieldset-legend  font-bold text-4xl">Want to be a Volunteer!</legend>
 
-        {/* Post Data (Read-Only) */}
+       
         <label className="label">Title</label>
         <input type="text" value={post.title} readOnly className="input input-bordered w-full" />
 
@@ -116,7 +116,7 @@ const ApplyVolunteer = () => {
         <label className="label">Resume Link</label>
         <input type="url"  name="resume" placeholder="Resume Link" className="input input-bordered w-full" />
 
-        {/* Suggestion Field */}
+        
         <label className="label">Suggestion</label>
         <textarea
           placeholder="Write any suggestion..."

@@ -23,12 +23,12 @@ const MyPostedNeeds = ({ myNeedsPromise }) => {
         const data = await res.json();
         if (data.deletedCount > 0) {
           Swal.fire('Deleted!', 'The post has been deleted.', 'success').then(() => {
-            // refresh page or re-fetch logic
+           
             window.location.reload();
           });
         }
       } catch (error) {
-        Swal.fire('Error!', 'Something went wrong.', 'error');
+        Swal.fire('Error!', 'Something went wrong.', error);
       }
     }
   };

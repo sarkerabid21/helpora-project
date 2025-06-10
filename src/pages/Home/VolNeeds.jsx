@@ -4,14 +4,14 @@ import { Link } from 'react-router';
 
 const VolNeeds = ({volunterPromise}) => {
     
-    // const jobs = use(volunterPromise);
+ 
     const sortedJobs = use(volunterPromise)
   .sort((a, b) => new Date(a.deadline) - new Date(b.deadline))
   .slice(0, 6);
 
     return (
         <div className='bg-teal-500 '>
-            {/* {jobs.length} */}
+           
             <h1 className='font-extrabold text-4xl text-center pt-10'>Volunteer Needs Urgent</h1>
             <div className='grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-6 lg:ml-16 py-16'>
                 {

@@ -26,7 +26,7 @@ const AddNeeds = () => {
 post.status = "active"
     console.log(post);
 
-    // Submit to backend
+   
     axios.post('http://localhost:5000/volunteer', post)
     .then(res => {
        if(res.data.insertedId){

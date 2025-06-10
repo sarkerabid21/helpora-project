@@ -12,7 +12,7 @@ const SocialLogin = ({from}) => {
       .then((result) => {
         console.log(result);
         navigate(from || '/');
-        // redirect or toast can go here
+        
       })
       .catch((error) => {
         console.log(error);

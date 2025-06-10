@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-// import { useOutletContext } from 'react-router-dom';
+
 import VolunteerCard from '../Shared/VolunteerCard';
 import VolunteerTable from '../Shared/VolunteerTable';
 import { useOutletContext } from 'react-router';
 
 const AllVolNeeds = () => {
-  const { isTableLayout } = useOutletContext(); // get layout toggle from RootLayout
+  const { isTableLayout } = useOutletContext(); 
 
   const [volunteerNeeds, setVolunteerNeeds] = useState([]);
   const [searchText, setSearchText] = useState('');

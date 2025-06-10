@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from "motion/react"
+
 
 const Success = () => {
     return (
