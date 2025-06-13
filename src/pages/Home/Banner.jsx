@@ -1,9 +1,11 @@
 import React from 'react';
-
-
+// import { motion } from "motion/react"
+import RollingGallery from './Rolling/RollingGallery';
+import { motion } from 'framer-motion'; 
 
 const Banner = () => {
     return (
+      <div>
        <div className="carousel  ">
   <div id="slide1" className="carousel-item relative w-full">
     <img 
@@ -41,6 +43,14 @@ const Banner = () => {
       <a href="#slide1" className="btn btn-circle">❯</a>
     </div>
   </div>
+  
+</div>
+<div className='py-6'>
+ 
+
+<RollingGallery autoplay={true} pauseOnHover={true} />
+</div>
+
 </div>
     );
 };
