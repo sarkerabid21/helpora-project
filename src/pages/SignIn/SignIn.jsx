@@ -3,7 +3,7 @@ import { AuthContext } from '../../contexts/AuthContext/AuthContext';
 import Lottie from 'lottie-react';
 import signInLottie from '../../assets/Animation - 1749226843029.json';
 import SocialLogin from '../Shared/SocialLogin';
-import { useLocation, useNavigate } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 
 const SignIn = () => {
   const { signInUser } = useContext(AuthContext);
@@ -56,6 +56,9 @@ const SignIn = () => {
             </form>
             <SocialLogin from={from}></SocialLogin>
           </div>
+           <p className='mb-3 mt-1 text-center font-semibold'>
+                            Don't Have An Account? <Link className='text-secondary font-semibold' to="/register">Register</Link>
+                        </p>
         </div>
       </div>
     </div>

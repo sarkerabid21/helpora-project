@@ -5,6 +5,7 @@ import { AuthContext } from '../../contexts/AuthContext/AuthContext';
 import SocialLogin from '../Shared/SocialLogin';
 import { updateProfile } from 'firebase/auth';
 import { auth } from '../../firebase/firebase.init'; 
+import { Link } from 'react-router';
 
 const Register = () => {
   const { createUser } = useContext(AuthContext);
@@ -69,6 +70,9 @@ const Register = () => {
             </form>
             <SocialLogin />
           </div>
+           <p className='mb-3 mt-1 text-center font-semibold'>
+                            Already Have An Account? <Link className='text-secondary font-semibold' to="/signin">Sign In</Link>
+                        </p>
         </div>
       </div>
     </div>
