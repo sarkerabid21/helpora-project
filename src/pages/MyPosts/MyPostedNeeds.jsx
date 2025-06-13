@@ -38,7 +38,7 @@ const navigate = useNavigate();
 };
 
   return (
-    <div>
+    <div className='min-h-screen py-6'>
       <h2 className="text-4xl font-bold text-center my-6">My Volunteer Needs Posts: {needs.length}</h2>
 
       {needs.length === 0 ? (

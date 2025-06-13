@@ -1,14 +1,15 @@
-import React, { useContext } from 'react';
-
-import Lottie from 'lottie-react';
+import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../contexts/AuthContext/AuthContext';
 import SocialLogin from '../Shared/SocialLogin';
 import { updateProfile } from 'firebase/auth';
-import { auth } from '../../firebase/firebase.init'; 
+import { auth } from '../../firebase/firebase.init';
+
+import Swal from 'sweetalert2';
 import { Link } from 'react-router';
 
 const Register = () => {
   const { createUser } = useContext(AuthContext);
+  const [passwordError, setPasswordError] = useState('');
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -18,39 +19,54 @@ const Register = () => {
     const password = form.password.value;
     const photoURL = form.photoURL.value;
 
+    // ✅ Password validation
+    const hasUppercase = /[A-Z]/.test(password);
+    const hasLowercase = /[a-z]/.test(password);
+    const isLongEnough = password.length >= 6;
+
+    if (!hasUppercase || !hasLowercase || !isLongEnough) {
+      setPasswordError("Password must be at least 6 characters and include an uppercase and lowercase letter.");
+      Swal.fire({
+        icon: 'error',
+        title: 'Invalid Password',
+        text: 'Must be at least 6 characters with uppercase & lowercase letters.',
+      });
+      return;
+    }
+
+    setPasswordError('');
+
     createUser(email, password)
       .then((result) => {
         const user = result.user;
 
-       
         return updateProfile(user, {
           displayName: name,
           photoURL: photoURL
         }).then(() => {
-        
           return auth.currentUser.reload();
         }).then(() => {
-          const updatedUser = auth.currentUser;
-          console.log(" Updated user info:", {
-            displayName: updatedUser.displayName,
-            email: updatedUser.email,
-            photoURL: updatedUser.photoURL
+          Swal.fire({
+            icon: 'success',
+            title: 'Registration Successful!',
+            text: 'You have been registered successfully!',
           });
-
         });
       })
       .catch((error) => {
-        console.error(" Registration error:", error.message);
+        console.error("Registration error:", error.message);
+        Swal.fire({
+          icon: 'error',
+          title: 'Registration Failed',
+          text: error.message,
+        });
       });
   };
 
   return (
-    <div className="hero  min-h-screen">
-      <img className='min-h-screen' src="https://i.ibb.co/HDjMyRhW/8767079.jpg" alt=""/>
+    <div className="hero min-h-screen">
+      <img className='min-h-screen' src="https://i.ibb.co/HDjMyRhW/8767079.jpg" alt="" />
       <div className="hero-content flex-col lg:flex-row-reverse">
-        <div className="text-center lg:text-left">
-         
-        </div>
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
           <div className="card-body">
             <h1 className="text-5xl font-bold">Register now!</h1>
@@ -62,6 +78,7 @@ const Register = () => {
                 <input name='email' type="email" className="input" placeholder="Email" required />
                 <label className="label">Password</label>
                 <input name='password' type="password" className="input" placeholder="Password" required />
+                {passwordError && <p className='text-red-500 text-xs'>{passwordError}</p>}
                 <label className="label">Photo URL</label>
                 <input name='photoURL' type="url" className="input" placeholder="Photo URL" />
                 <div><a className="link link-hover">Forgot password?</a></div>
@@ -69,10 +86,10 @@ const Register = () => {
               </fieldset>
             </form>
             <SocialLogin />
+            <p className='mb-3 mt-1 text-center font-semibold'>
+              Already Have An Account? <Link className='text-secondary font-semibold' to="/signin">Sign In</Link>
+            </p>
           </div>
-           <p className='mb-3 mt-1 text-center font-semibold'>
-                            Already Have An Account? <Link className='text-secondary font-semibold' to="/signin">Sign In</Link>
-                        </p>
         </div>
       </div>
     </div>

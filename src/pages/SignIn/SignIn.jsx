@@ -4,6 +4,7 @@ import Lottie from 'lottie-react';
 import signInLottie from '../../assets/Animation - 1749226843029.json';
 import SocialLogin from '../Shared/SocialLogin';
 import { Link, useLocation, useNavigate } from 'react-router';
+import Swal from 'sweetalert2';
 
 const SignIn = () => {
   const { signInUser } = useContext(AuthContext);
@@ -17,16 +18,29 @@ const SignIn = () => {
     const email = form.email.value;
     const password = form.password.value;
 
-    console.log(email, password);
+    // console.log(email, password);
 
     signInUser(email, password)
       .then((result) => {
         console.log(result.user);
-       
-        navigate(from);
+        
+        Swal.fire({
+                    title: "Success!",
+                    text: "You have logged in successfully!",
+                    icon: "success",
+                    confirmButtonText: "OK"
+                }).then(() => {
+                    navigate(from, { replace: true }); 
+                });
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error);
+                Swal.fire({
+                    title: "Error!",
+                    text: "Login failed. Please check your email/password.",
+                    icon: "error",
+                    confirmButtonText: "Try Again"
+                });
       });
   };
 

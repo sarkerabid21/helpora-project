@@ -59,7 +59,7 @@ const Navbar = ({ toggleLayout, isTableLayout, currentPath }) => {
         
     </>
     return (
-        <div className="navbar  bg-[#0D9488] shadow-sm ">
+        <div className="navbar  bg-[#0D9488] shadow-sm border-0 ">
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -121,13 +121,14 @@ const Navbar = ({ toggleLayout, isTableLayout, currentPath }) => {
     </div>
   </div>
   <div className="navbar-center hidden lg:flex">
+    
     <ul className="menu menu-horizontal px-1">
       {links}
     </ul>
   </div>
   
   <div className="navbar-end flex items-center gap-3">
-    <details className="dropdown">
+    <details className="dropdown hidden lg:flex">
   <summary className="btn p-0 w-10 h-10 min-h-0 rounded-full border-0 overflow-hidden">
      
      {user?.photoURL && <img src={user.photoURL} alt="profile" />}
