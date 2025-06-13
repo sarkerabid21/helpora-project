@@ -1,5 +1,5 @@
 import React, { use } from 'react';
-import { NavLink } from 'react-router';
+import { Link, NavLink } from 'react-router';
 import { AuthContext } from '../../contexts/AuthContext/AuthContext';
 import ThemeToggle from './ThemeToggle';
 import { motion } from "motion/react";
@@ -22,27 +22,39 @@ const Navbar = ({ toggleLayout, isTableLayout, currentPath }) => {
     const links = <>
      <li><NavLink to="/">Home</NavLink></li>
      
-     {
+      {
       user && <>
-      <li><NavLink to="/addNeeds">Add Needs</NavLink></li>
+      
       <li><NavLink to="/allNeeds">All Needs</NavLink></li>
       </>
      }
-     {
-      user && <>
-      <div className="dropdown dropdown-start">
-  <div tabIndex={0}  className="btn shadow-none h-8 bg-teal-600 border-0 m-1">My Posts</div>
-  <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
-    <li><NavLink to="/myRequests">My Volunteer Request Post</NavLink></li>
-    <li><NavLink to="/myPosts">My volunteer need post
-</NavLink></li>
-    
-  </ul>
-</div>
+     {user && (
+  <div className="dropdown dropdown-end">
+    <div tabIndex={0} role="button" className="btn m-1 bg-[#0D9488]">My Profile</div>
+    <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box w-52 p-2 shadow">
 
-      
-      </>
-     }
+     
+      <li>
+        <NavLink to="/addNeeds">Add Volunteer Need Post</NavLink>
+      </li>
+
+      <li tabIndex={0}>
+        <details>
+          <summary>My Posts</summary>
+          <ul className="p-2 bg-base-100">
+            <li>
+              <NavLink to="/myRequests">My Volunteer Request Post</NavLink>
+            </li>
+            <li>
+              <NavLink to="/myPosts">My Volunteer Need Post</NavLink>
+            </li>
+          </ul>
+        </details>
+      </li>
+
+    </ul>
+  </div>
+)}
      
         
     </>
@@ -60,25 +72,39 @@ const Navbar = ({ toggleLayout, isTableLayout, currentPath }) => {
      
      {
       user && <>
-      <li><NavLink to="/addNeeds">Add Needs</NavLink></li>
+      {/* <li><NavLink to="/addNeeds">Add Needs</NavLink></li> */}
       <li><NavLink to="/allNeeds">All Needs</NavLink></li>
       </>
      }
-     {
-      user && <>
-      <div className="dropdown dropdown-start">
-  <div tabIndex={0}  className="btn shadow-none h-8  border-0 m-1">My Posts</div>
-  <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
-    <li><NavLink to="/myRequests">My Volunteer Request Post</NavLink></li>
-    <li><NavLink to="/myPosts">My volunteer need post
-</NavLink></li>
-    
-  </ul>
-</div>
+     {user && (
+  <div className="dropdown dropdown-end">
+    <div tabIndex={0} role="button" className="btn m-1">My Profile</div>
+    <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box w-52 p-2 shadow">
 
-      
-      </>
-     }
+     
+      <li>
+        <NavLink to="/addNeeds">Add Volunteer Need Post</NavLink>
+      </li>
+
+      <li tabIndex={0}>
+        <details>
+          <summary>My Posts</summary>
+          <ul className="p-2 bg-base-100">
+            <li>
+              <NavLink to="/myRequests">My Volunteer Request Post</NavLink>
+            </li>
+            <li>
+              <NavLink to="/myPosts">My Volunteer Need Post</NavLink>
+            </li>
+          </ul>
+        </details>
+      </li>
+
+    </ul>
+  </div>
+)}
+
+    
      
        
       </ul>
@@ -101,6 +127,24 @@ const Navbar = ({ toggleLayout, isTableLayout, currentPath }) => {
   </div>
   
   <div className="navbar-end flex items-center gap-3">
+    <details className="dropdown">
+  <summary className="btn p-0 w-10 h-10 min-h-0 rounded-full border-0 overflow-hidden">
+     
+     {user?.photoURL && <img src={user.photoURL} alt="profile" />}
+
+  </summary> 
+  <ul className="menu dropdown-content bg-base-100 rounded-box z-10 w-64 p-2 shadow-sm mt-2">
+    <li>
+      <a className="block w-full  text-sm">
+       {user?.displayName}
+
+      </a>
+    </li>
+    
+    <li> <Link onClick={handleSignOut}  className="">Signout</Link></li>
+
+  </ul>
+</details>
     {
         user ? <button onClick={handleSignOut} className='btn'>Sign Out</button> :
         <>
@@ -118,7 +162,11 @@ const Navbar = ({ toggleLayout, isTableLayout, currentPath }) => {
         )}
 
        
+  
+  
   </div>
+  
+
 </div>
     );
 };
