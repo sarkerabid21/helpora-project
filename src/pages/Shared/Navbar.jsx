@@ -1,175 +1,155 @@
-import React, { use } from 'react';
-import { Link, NavLink } from 'react-router';
+import React, { useContext } from 'react';
+// import { Link, NavLink } from 'react;
 import { AuthContext } from '../../contexts/AuthContext/AuthContext';
 import ThemeToggle from './ThemeToggle';
-import { motion } from "motion/react";
 import { TbLayoutListFilled, TbLayoutDashboardFilled } from "react-icons/tb";
+import { Link, NavLink } from 'react-router';
+import { PagesMenu } from './PagesMenu';
 
 const Navbar = ({ toggleLayout, isTableLayout, currentPath }) => {
+  const { user, signOutUser } = useContext(AuthContext);
 
-  const showLayoutToggle = currentPath === '/allNeeds';
+  const showLayoutToggle = currentPath === '/';
 
-    const {user, signOutUser} = use(AuthContext)
-    const handleSignOut = () =>{
-        signOutUser()
-        .then(()=> {
-            console.log('sign out')
-        }).catch(error => {
-    console.log(error)
-  });
-    } 
+  const handleSignOut = () => {
+    signOutUser()
+      .then(() => console.log('Signed out'))
+      .catch(error => console.error(error));
+  };
 
-    const links = <>
-     <li><NavLink to="/">Home</NavLink></li>
-     
-      {
-      user && <>
+  // const pagesDropdown = (
+  //   <ul className="p-2 bg-base-100 rounded-box w-52">
+  //     <li><NavLink to="/about">About Us</NavLink></li>
+  //     <li><NavLink to="/our-team">Our Team</NavLink></li>
+  //     <li><NavLink to="/team-single">Team Single</NavLink></li>
+  //     <li><NavLink to="/our-mission">Our Mission</NavLink></li>
+  //     <li><NavLink to="/services">Services</NavLink></li>
+  //     <li><NavLink to="/faq">FAQ</NavLink></li>
+  //     <li><NavLink to="/shop">Shop</NavLink></li>
+  //     <li><NavLink to="/coming-soon">Coming Soon</NavLink></li>
+  //     <li><NavLink to="/elements">Elements</NavLink></li>
+  //     <li><NavLink to="/typography">Typography</NavLink></li>
+  //   </ul>
+  // );
+
+  const links = (
+    <>
+      <li><NavLink to="/">Home</NavLink></li>
       
-      <li><NavLink to="/allNeeds">All Needs</NavLink></li>
-      </>
-     }
-     {user && (
-  <div className="dropdown dropdown-end">
-    <div tabIndex={0} role="button" className="btn m-1 bg-[#0D9488]">My Profile</div>
-    <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box w-52 p-2 shadow">
-
-     
       <li>
-        <NavLink to="/addNeeds">Add Volunteer Need Post</NavLink>
+        <PagesMenu/>
+        {/* <details className="dropdown hidden lg:flex">
+          <summary className="btn p-0 w-10 h-10 min-h-0 border-0 overflow-hidden">Pages</summary>
+          {pagesDropdown}
+        </details> */}
       </li>
-
-      <li tabIndex={0}>
-        <details>
-          <summary>My Posts</summary>
-          <ul className="p-2 bg-base-100">
-            <li>
-              <NavLink to="/myRequests">My Volunteer Request Post</NavLink>
-            </li>
-            <li>
-              <NavLink to="/myPosts">My Volunteer Need Post</NavLink>
-            </li>
-          </ul>
-        </details>
-      </li>
-
-    </ul>
-  </div>
-)}
-     
-        
-    </>
-    return (
-        <div className="navbar  bg-[#0D9488] shadow-sm border-0 ">
-  <div className="navbar-start">
-    <div className="dropdown">
-      <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
-      </div>
-      <ul
-        tabIndex={0}
-        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-       <li><NavLink to="/">Home</NavLink></li>
-     
-     {
-      user && <>
-      {/* <li><NavLink to="/addNeeds">Add Needs</NavLink></li> */}
       <li><NavLink to="/allNeeds">All Needs</NavLink></li>
-      </>
-     }
-     {user && (
-  <div className="dropdown dropdown-end">
-    <div tabIndex={0} role="button" className="btn m-1">My Profile</div>
-    <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box w-52 p-2 shadow">
-
-     
-      <li>
-        <NavLink to="/addNeeds">Add Volunteer Need Post</NavLink>
-      </li>
-
-      <li tabIndex={0}>
-        <details>
-          <summary>My Posts</summary>
-          <ul className="p-2 bg-base-100">
-            <li>
-              <NavLink to="/myRequests">My Volunteer Request Post</NavLink>
-            </li>
-            <li>
-              <NavLink to="/myPosts">My Volunteer Need Post</NavLink>
-            </li>
-          </ul>
-        </details>
-      </li>
-
-    </ul>
-  </div>
-)}
-
-    
-     
-       
-      </ul>
-    </div>
-    <div className='flex items-center gap-3'>
-    <img className='w-[5%]' src='https://i.ibb.co/YFb1Xj41/Screenshot-2025-06-04-211718-removebg-preview.pnghttps://i.ibb.co/WWkdB1Rx/Screenshot-2025-05-20-012215.png' alt=""/>
-    <h1 className='font-bold'><motion.span
-                            animate={
-                                {
-                                    color: ['#ff5733', '#33ff33', '#FFA55D'],
-                                    transition: { duration: 2, repeat: Infinity }
-                                }}
-                        >HELP</motion.span>ORA</h1>
-    </div>
-  </div>
-  <div className="navbar-center hidden lg:flex">
-    
-    <ul className="menu menu-horizontal px-1">
-      {links}
-    </ul>
-  </div>
-  
-  <div className="navbar-end flex items-center gap-3">
-    <details className="dropdown hidden lg:flex">
-  <summary className="btn p-0 w-10 h-10 min-h-0 rounded-full border-0 overflow-hidden">
-     
-     {user?.photoURL && <img src={user.photoURL} alt="profile" />}
-
-  </summary> 
-  <ul className="menu dropdown-content bg-base-100 rounded-box z-10 w-64 p-2 shadow-sm mt-2">
-    <li>
-      <a className="block w-full  text-sm">
-       {user?.displayName}
-
-      </a>
-    </li>
-    
-    <li> <Link onClick={handleSignOut}  className="">Signout</Link></li>
-
-  </ul>
-</details>
-    {
-        user ? <button onClick={handleSignOut} className='btn'>Sign Out</button> :
+      <li><NavLink to="/donations">Donations</NavLink></li>
+      <li><NavLink to="/portfolio">Portfolio</NavLink></li>
+      {user && (
         <>
-        <NavLink className="btn" to="/signin">SignIn</NavLink>
-    <NavLink className="btn" to="/register">Register</NavLink>
+          <li><NavLink to="/addNeeds">Add Needs</NavLink></li>
+          <li><NavLink to="/myRequests">Be Volunteer</NavLink></li>
+          <li><NavLink to="/myRequests">My Requests</NavLink></li>
+          <li><NavLink to="/myPosts">My Post</NavLink></li>
         </>
-    }
-    <ThemeToggle></ThemeToggle>
+      )}
+    </>
+  );
 
-      
+  return (
+  
+    <div className="navbar  bg-[#add2a7] shadow-sm border-0 px-4 sm:px-6 lg:px-12">
+      <div className="navbar-start">
+        {/* Mobile menu */}
+        <div className="dropdown">
+          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none"
+              viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                d="M4 6h16M4 12h8m-8 6h16" />
+            </svg>
+          </div>
+          <ul tabIndex={0}
+            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow">
+            {user && (
+              <details className="dropdown">
+                <summary className="btn p-0 w-10 h-10 min-h-0 rounded-full border-0 overflow-hidden">
+                  {user?.photoURL && <img src={user.photoURL} alt="profile" />}
+                </summary>
+                <li><span className="block w-full text-sm">{user?.displayName}</span></li>
+                <li><Link onClick={handleSignOut}>Sign out</Link></li>
+              </details>
+            )}
+            <li><NavLink to="/">Home</NavLink></li>
+            <li><PagesMenu /></li>
+            <PagesMenu />
+            <li><NavLink to="/allNeeds">All Needs</NavLink></li>
+            <li><NavLink to="/donations">Donations</NavLink></li>
+            <li><NavLink to="/portfolio">Portfolio</NavLink></li>
+            {user && (
+              <>
+                <li><NavLink to="/addNeeds">Add Needs</NavLink></li>
+                <li><NavLink to="/myRequests">Be Volunteer</NavLink></li>
+                <li><NavLink to="/myRequests">My Request</NavLink></li>
+                <li><NavLink to="/myPosts">My Post</NavLink></li>
+              </>
+            )}
+          </ul>
+        </div>
+
+        {/* Logo */}
+        <div className='flex items-center gap-3'>
+          <img className='w-[50px]' src='https://i.ibb.co/YFb1Xj41/Screenshot-2025-06-04-211718-removebg-preview.png' alt="Logo" />
+          <h1 className='font-bold'>HELPORA</h1>
+        </div>
+      </div>
+
+      {/* Desktop menu */}
+      <div className="navbar-center hidden lg:flex">
+        <ul className="menu menu-horizontal px-1">{links}</ul>
+      </div>
+
+      {/* Right section */}
+      <div className="navbar-end flex items-center gap-3">
+        
+        {user && (
+          <details className="dropdown hidden lg:flex">
+            <summary className="btn p-0 w-10 h-10 min-h-0 rounded-full border-0 overflow-hidden">
+              {user?.photoURL && <img src={user.photoURL} alt="profile" />}
+            </summary>
+            <ul className="menu dropdown-content bg-base-100 rounded-box z-10 w-64 p-2 shadow-sm mt-2">
+              <li><span className="block w-full text-sm">{user?.displayName}</span></li>
+              <li><Link onClick={handleSignOut}>Sign out</Link></li>
+            </ul>
+          </details>
+        )}
+        <NavLink className="btn cursor-pointer p-[3px] relative" to="/signin">
+            <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg" />
+            <div className="px-8 py-2 bg-black rounded-[6px] relative group transition duration-200 text-white hover:bg-transparent">
+              Donations
+            </div>
+          </NavLink>
+
+        {user ? (
+          null
+        ) : (
+          <>
+            <NavLink className="btn" to="/signin">Sign In</NavLink>
+            <NavLink className="btn" to="/register">Register</NavLink>
+          </>
+        )}
+
+        {/* <ThemeToggle className="cursor-pointer" /> */}
+
         {showLayoutToggle && (
-          <button  onClick={toggleLayout} className=" text-2xl cursor-pointer">
+          <button onClick={toggleLayout} className="text-2xl cursor-pointer">
             {isTableLayout ? <TbLayoutListFilled /> : <TbLayoutDashboardFilled />}
           </button>
         )}
-
-       
-  
-  
-  </div>
-  
-
-</div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default Navbar;

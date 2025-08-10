@@ -11,10 +11,10 @@ const Success = () => {
      transition={{duration:4, repeat: Infinity}}
       src='https://i.ibb.co/jkfX13DZ/download-1.jpg'
     />
-     <motion.img className='rounded-t-4xl border-l-16 border-b-16 rounded-br-4xl border-red-500'
+     <motion.img className='rounded-t-4xl border-l-16 border-b-16  rounded-br-4xl border-red-500'
      animate={{x:[100,150,100]}}
      transition={{duration:5, repeat: Infinity, delay:2}}
-      src='https://i.ibb.co/VYVZTmJZ/Vilnius-Marathon-2015-volunteers-by-Augustas-Didzgalvis.jpg'
+      src='https://i.ibb.co.com/LDPTn6Hg/download-5.jpg'
     />
      <motion.img className='rounded-t-4xl border-l-16 border-b-16 rounded-br-4xl border-green-500 '
      animate={{x:[-100,-150,-100], y:[-40,-60,-40]}

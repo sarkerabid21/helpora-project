@@ -15,6 +15,8 @@ import AddNeeds from "../pages/Home/AddNeeds";
 import MyPosts from "../pages/MyPosts/MyPosts";
 import UpdatePost from "../pages/Shared/UpdatePost";
 import Error from "../pages/Shared/Error";
+import Faq from "../pages/Shared/Faq";
+import AboutUs from "../pages/Shared/AboutUs";
 
 
 const router = createBrowserRouter([
@@ -72,6 +74,16 @@ const router = createBrowserRouter([
            element: <PrivateRoute>
               <UpdatePost></UpdatePost>
             </PrivateRoute>
+
+        },
+        {
+            path: '/faq',
+            Component: Faq
+
+        },
+        {
+            path: '/aboutus',
+            Component: AboutUs
 
         },
         {

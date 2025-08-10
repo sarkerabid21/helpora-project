@@ -1,2 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Amaranth:ital,wght@0,400;0,700;1,400;1,700&family=Berkshire+Swash&family=Lobster&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sora:wght@100..800&display=swap');
 @import "tailwindcss";
 @plugin "daisyui";
+
+/* Active link styles */
+a.active {
+  border-radius: 2px;
+  padding: 4px 10px;
+  text-decoration: underline;
+  text-decoration-color: black;
+}
+
+/* Global font */
+* {
+  font-family: "Amaranth", sans-serif;
+}
+
+/* Light Theme */
+:root {
+  --p: #33582d;         /* primary */
+  --s: #9abacb;         /* secondary */
+  --a: #47578a;         /* accent */
+  --n: #0a0202;         /* neutral (text on colored backgrounds) */
+  --b1: #ecf4eb;        /* base-100 (main background) */
+  --bc: #142112;        /* base-content (main text color) */
+}
+
+/* Dark Theme */
+[data-theme="dark"] {
+  --p: #add2a7;
+  --s: #345465;
+  --a: #7585b8;
+  --n: #fdf6f6;
+  --b1: #0c140b;
+  --bc: #e0edde;
+}
+
+/* .navbar {
+  background-color: var(--n);    
+  color: var(--bc);              
+  
+   position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.btn-custom {
+  background-color: var(--p);
+  color: var(--n);
+}
+
+.text-accent {
+  color: var(--bc);
+} */

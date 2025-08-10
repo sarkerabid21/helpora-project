@@ -10,8 +10,7 @@ const Home = () => {
     .then(res => res.json())
 
     return (
-        <div className="bg-cover  bg-center bg-fixed"
-      style={{ backgroundImage: 'url("https://i.ibb.co/R4TrKD12/natural-yellow-sand-beach-background.jpg")' }}>
+        <div className="bg-cover  bg-center bg-fixed">
             <Banner></Banner>
             <Suspense fallback={<span className="loading loading-dots loading-lg"></span>}>
                 <VolNeeds volunterPromise={volunterPromise}></VolNeeds>

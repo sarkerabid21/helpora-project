@@ -15,7 +15,7 @@ const ThemeToggle = () => {
 
   return (
     <button onClick={toggleTheme} className="btn btn-sm ml-2">
-      {theme === 'light' ? <BsMoonStarsFill /> :  <BsFillSunFill /> }
+      {theme === 'light' ? <BsMoonStarsFill /> : <BsFillSunFill />}
     </button>
   );
 };
