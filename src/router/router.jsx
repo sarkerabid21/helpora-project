@@ -17,6 +17,7 @@ import UpdatePost from "../pages/Shared/UpdatePost";
 import Error from "../pages/Shared/Error";
 import Faq from "../pages/Shared/Faq";
 import AboutUs from "../pages/Shared/AboutUs";
+import Donations from "../pages/Shared/Donations";
 
 
 const router = createBrowserRouter([
@@ -79,6 +80,11 @@ const router = createBrowserRouter([
         {
             path: '/faq',
             Component: Faq
+
+        },
+        {
+            path: '/donations',
+            Component: Donations
 
         },
         {

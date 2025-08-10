@@ -2,6 +2,7 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+
 /* Active link styles */
 a.active {
   border-radius: 2px;
@@ -34,7 +35,11 @@ a.active {
   --b1: #0c140b;
   --bc: #e0edde;
 }
-
+.navbar{
+    position: sticky;
+  top: 0;
+  z-index: 1000;
+}
 /* .navbar {
   background-color: var(--n);    
   color: var(--bc);              
@@ -43,6 +48,7 @@ a.active {
   top: 0;
   z-index: 1000;
 }
+  .
 
 .btn-custom {
   background-color: var(--p);
