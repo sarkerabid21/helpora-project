@@ -21,20 +21,20 @@ const VolunteerCard = ({ job }) => {
   };
 
   return (
-    <div className="card bg-green-100  lg:w-96 shadow-sm  w-46 mx-auto">
+    <div className="card dark:bg-green-100 bg-teal-50  lg:w-96 shadow-sm  w-46 mx-auto">
       <figure>
         <img src={thumbnail} alt="Post Thumbnail" />
       </figure>
       
       <div className="card-body">
-        <h2 className="card-title dark:text-green-200 text-green-900">{title}
+        <h2 className="card-title  text-teal-900">{title}
           <div className="badge badge-secondary w-[50%]">{category}</div>
         </h2>
-        <p className="font-bold dark:text-green-200 text-green-900">Deadline: {deadline}</p>
+        <p className="font-bold  text-teal-900">Deadline: {deadline}</p>
         <div className="card-actions justify-end">
           <button
             onClick={handleViewDetails}
-            className="btn px-1 dark:bg-teal-200 bg-teal-900 text-white dark:text-teal-900 "
+            className="btn px bg-teal-900 text-white  "
           >
             Details
           </button>

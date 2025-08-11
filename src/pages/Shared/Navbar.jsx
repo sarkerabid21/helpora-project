@@ -40,7 +40,7 @@ const Navbar = () => {
             src="https://i.ibb.co/YFb1Xj41/Screenshot-2025-06-04-211718-removebg-preview.png"
             alt="Logo"
           />
-          <h1 className="text-teal-800 font-bold dark:text-green-200 hidden lgLblock">
+          <h1 className="text-teal-800 font-bold dark:text-green-200 hidden lg:block">
             HELPORA
           </h1>
         </div>

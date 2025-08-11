@@ -27,9 +27,9 @@ useEffect(() => {
 
   return (
     <div 
-    className="px-4 bg-green-100 dark:bg-green-950  lg:px-16 py-20 bg-cover  bg-center bg-fixed"
+    className="px-4 bg-green-100 dark:bg-teal-600  lg:px-16 py-20 bg-cover  bg-center bg-fixed"
      >
-      <h1 className='text-xl  lg:text-4xl font-bold my-6 text-center'>Volunteer need posts page</h1>
+      <h1 className='text-xl dark:text-green-200 lg:text-4xl font-bold my-6 text-center'>Volunteer need posts page</h1>
 
       <div className='flex justify-center mb-8'>
         <input

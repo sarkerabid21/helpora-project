@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router";
 
 function DonationCard({ donation }) {
   return (
-    <div className="border rounded shadow p-4 flex flex-col">
+    <div className="border bg-green-100 rounded shadow p-4 flex flex-col">
       <img
         src={donation.image}
         alt={donation.title}
@@ -96,9 +96,9 @@ const Donations = () => {
         ) : donations.length === 0 ? (
           <p className="text-center text-gray-700 text-lg">No donations found</p>
         ) : (
-          <div className="grid bg-green-100 grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid  grid-cols-1 md:grid-cols-3 gap-6">
             {donations.map((donation) => (
-              <DonationCard key={donation._id} donation={donation} />
+              <DonationCard className=" bg-white" key={donation._id} donation={donation} />
             ))}
           </div>
         )}

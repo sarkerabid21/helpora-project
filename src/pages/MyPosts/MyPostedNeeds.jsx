@@ -38,11 +38,11 @@ const navigate = useNavigate();
 };
 
   return (
-    <div className='min-h-screen py-6'>
-      <h2 className="text-4xl font-bold text-center my-6">My Volunteer Needs Posts: {needs.length}</h2>
+    <div className='min-h-screen py-6 bg-green-100 dark:bg-teal-600'>
+      <h2 className="text-4xl dark:text-green-100 text-teal-600 font-bold text-center my-6">My Volunteer Needs Posts: {needs.length}</h2>
 
       {needs.length === 0 ? (
-        <p className="text-center text-gray-500">You haven't created any volunteer posts yet.</p>
+        <p className="text-center text-gray-500 dark:text-gray-100">You haven't created any volunteer posts yet.</p>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
           {needs.map((need) => (

@@ -90,7 +90,7 @@ const WhatMakeUsDifferent = () => {
   return (
     <section className="py-16  relative">
       <div className="text-center mb-12">
-        <h2 className="text-3xl dark:bg-green-100 bg-teal-600 font-bold">What Make Us Different</h2>
+        <h2 className="text-3xl dark:text-green-100 text-teal-600 font-bold">What Make Us Different</h2>
       </div>
 
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 px-4">

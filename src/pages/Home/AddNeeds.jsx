@@ -47,7 +47,8 @@ post.status = "active"
   };
 
   return (
-    <div className="max-w-3xl mx-auto p-8 bg-teal-600 rounded-xl shadow-lg my-10">
+    <div className=''>
+      <div className="max-w-3xl mx-auto p-8 bg-teal-600  rounded-xl shadow-lg my-10">
       <h1 className="lg:text-4xl text-xl font-bold text-center mb-8 ">Need Support? Post Your Volunteer Request Here</h1>
       <form onSubmit={handleSubmit} className="space-y-6">
         
@@ -112,6 +113,7 @@ post.status = "active"
 
         <button type="submit" className="btn btn-secondary w-full">Add Post</button>
       </form>
+    </div>
     </div>
   );
 };
