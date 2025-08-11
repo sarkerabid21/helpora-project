@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useLocation } from "react-router";
+import FAQSection from "./FAQSection";
 // import { Link, useLocation } from "react-router-dom";
 
 const FAQHeader = () => {
@@ -7,7 +8,8 @@ const FAQHeader = () => {
   const pathnames = location.pathname.split("/").filter((x) => x);
 
   return (
-    <div className="relative w-full overflow-hidden">
+    <div className="bg-green-100 dark:bg-teal-600">
+ <div className="relative w-full overflow-hidden">
   <img
     src="https://i.ibb.co.com/jPvMLfBX/multiethnic-friends-socializing-while-watching-online-funny-videos-laptop-resting-sofa-back.jpg"
     alt="FAQ Header"
@@ -44,6 +46,9 @@ const FAQHeader = () => {
     </nav>
   </div>
 </div>
+<FAQSection></FAQSection>
+    </div>
+   
 
   );
 };

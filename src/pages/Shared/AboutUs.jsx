@@ -88,9 +88,9 @@ const WhatMakeUsDifferent = () => {
   ];
 
   return (
-    <section className="py-16 bg-[#142112] relative">
+    <section className="py-16  relative">
       <div className="text-center mb-12">
-        <h2 className="text-3xl text-[#ecf4eb] font-bold">What Make Us Different</h2>
+        <h2 className="text-3xl dark:bg-green-100 bg-teal-600 font-bold">What Make Us Different</h2>
       </div>
 
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 px-4">
@@ -118,7 +118,7 @@ const AboutUs = () => {
   const pathnames = location.pathname.split("/").filter((x) => x);
 
   return (
-    <div>
+    <div className="bg-green-100 dark:bg-teal-600">
       {/* Header and Breadcrumb */}
       <div className="relative w-full overflow-hidden max-h-full">
         <img
@@ -175,7 +175,7 @@ const AboutUs = () => {
 
       {/* Volunteer Team Headline */}
       <section className="max-w-6xl mx-auto px-4 mt-20 mb-8">
-        <h2 className="text-3xl font-bold text-white text-center mb-8">Meet Our Volunteer Team</h2>
+        <h2 className="text-3xl font-bold dark:text-green-100 text-teal-600 text-center mb-8">Meet Our Volunteer Team</h2>
       </section>
 
       {/* Volunteer Carousel Section */}

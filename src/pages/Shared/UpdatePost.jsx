@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-
+import loadingLottie from '../../assets/loading.json';
 import useAuth from '../../hooks/useAuth';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import Swal from 'sweetalert2';
 import { useParams } from 'react-router';
+import Lottie from 'lottie-react';
 
 const UpdatePost = () => {
   const { id } = useParams();
@@ -53,8 +54,7 @@ const UpdatePost = () => {
       });
   };
 
-  if (!post) return <p className="text-center mt-10">Loading post data...</p>;
-
+  if (!post) return <Lottie className='my-10' animationData={loadingLottie} loop={true} />
   return (
     <div className="max-w-2xl mx-auto p-6 my-10 bg-gray-800 rounded-xl shadow">
       <h2 className="text-2xl font-bold mb-6 text-center">Update Volunteer Post</h2>

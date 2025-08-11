@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { FaFacebook, FaLinkedin, FaYoutube, FaThreads } from 'react-icons/fa6'; 
+import { NavLink } from 'react-router';
 
 const Footer = () => {
   return (
@@ -22,11 +23,11 @@ const Footer = () => {
           <div>
             <h3 className="text-xl font-bold text-white mb-4">Quick Links</h3>
             <ul className="space-y-2">
-              <li><a href="/about" className="hover:text-white transition-colors duration-200 text-sm">About Us</a></li>
-              <li><a href="/opportunities" className="hover:text-white transition-colors duration-200 text-sm">Opportunities</a></li>
-              <li><a href="/events" className="hover:text-white transition-colors duration-200 text-sm">Events</a></li>
-              <li><a href="/contact" className="hover:text-white transition-colors duration-200 text-sm">Contact Us</a></li>
-              <li><a href="/privacy" className="hover:text-white transition-colors duration-200 text-sm">Privacy Policy</a></li>
+              <li><NavLink to="/aboutus"  className="hover:text-white transition-colors duration-200 text-sm">About Us</NavLink></li>
+              {/* <li><a href="/opportunities" className="hover:text-white transition-colors duration-200 text-sm">Opportunities</a></li> */}
+              {/* <li><a href="/event" className="hover:text-white transition-colors duration-200 text-sm">Events</a></li> */}
+              {/* <li><a href="/contact" className="hover:text-white transition-colors duration-200 text-sm">Contact Us</a></li> */}
+              {/* <li><a href="/privacy" className="hover:text-white transition-colors duration-200 text-sm">Privacy Policy</a></li> */}
             </ul>
           </div>
 
@@ -39,9 +40,9 @@ const Footer = () => {
             <p className="text-sm mt-2">
               Email: <a >info@helpora.com</a>
             </p>
-            <p className="text-sm mt-2">
+            {/* <p className="text-sm mt-2">
               Phone: <a  >+880 1XX XXX XXXX</a>
-            </p>
+            </p> */}
           </div>
 
          

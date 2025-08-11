@@ -1,23 +1,6 @@
 import React, { useEffect, useState } from "react";
-// import { Link, useLocation } from "react-router-dom"; // correct import
-import {
-  Tabs,
-  TabsHeader,
-  TabsBody,
-  Tab,
-  TabPanel,
-} from "@material-tailwind/react";
 import { Link, useLocation } from "react-router";
 
-const countries = [
-  { label: "Bangladesh", value: "Bangladesh" },
-  { label: "Africa", value: "Africa" },
-  { label: "India", value: "India" },
-  { label: "Nigeria", value: "Nigeria" },
-  { label: "Zimbabwe", value: "Zimbabwe" },
-];
-
-// Donation Card
 function DonationCard({ donation }) {
   return (
     <div className="border rounded shadow p-4 flex flex-col">
@@ -33,6 +16,7 @@ function DonationCard({ donation }) {
           Raised: <strong>{donation.raised}</strong> / Goal: <strong>{donation.goal}</strong>
         </p>
         <p>Progress: {donation.progress_percent}%</p>
+        <p className="italic mt-1 text-sm text-gray-500">Country: {donation.country}</p>
       </div>
     </div>
   );
@@ -40,16 +24,14 @@ function DonationCard({ donation }) {
 
 const Donations = () => {
   const location = useLocation();
-  const pathnames = location.pathname.split("/").filter((x) => x);
+  const pathnames = location.pathname.split("/").filter(Boolean);
 
-  const [selectedCountry, setSelectedCountry] = useState(countries[0].value);
   const [donations, setDonations] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  // Fetch donations on country change
   useEffect(() => {
     setLoading(true);
-    fetch(`https://volunteer-servers.vercel.app//donations?country=${selectedCountry}`)
+    fetch("https://volunteer-servers.vercel.app/donations") // সব দেশের ডেটা একসাথে
       .then((res) => res.json())
       .then((data) => {
         setDonations(data);
@@ -59,15 +41,15 @@ const Donations = () => {
         setDonations([]);
         setLoading(false);
       });
-  }, [selectedCountry]);
+  }, []);
 
   return (
-    <div>
-      {/* Hero section */}
+    <div className="bg-[#e0edde] min-h-screen">
+      {/* Hero Section */}
       <div className="relative w-full overflow-hidden">
         <img
-          src="https://i.ibb.co.com/0jLm2H3z/portrait-young-viking-children.jpg"
-          alt="FAQ Header"
+          src="https://i.ibb.co/0jLm2H3z/portrait-young-viking-children.jpg"
+          alt="Donations Hero"
           className="w-full h-[250px] md:h-[350px] lg:h-[450px] object-cover"
         />
 
@@ -76,7 +58,7 @@ const Donations = () => {
             Donations
           </h1>
 
-          <nav className="text-sm md:text-base text-white drop-shadow">
+          <nav className="text-sm md:text-base text-white drop-shadow flex flex-wrap justify-center gap-2">
             <Link to="/" className="text-accent font-semibold">
               HOME
             </Link>
@@ -89,9 +71,14 @@ const Donations = () => {
                 <span key={name}>
                   {" › "}
                   {isLast ? (
-                    <span className="text-[#add2a7] font-semibold uppercase">{name}</span>
+                    <span className="text-[#add2a7] font-semibold uppercase">
+                      {name}
+                    </span>
                   ) : (
-                    <Link to={routeTo} className="text-[#add2a7] font-semibold uppercase">
+                    <Link
+                      to={routeTo}
+                      className="text-[#add2a7] font-semibold uppercase"
+                    >
                       {name}
                     </Link>
                   )}
@@ -102,35 +89,19 @@ const Donations = () => {
         </div>
       </div>
 
-      {/* Tabs with donations */}
-      <div className="mt-8 px-4 md:px-10">
-        <Tabs value={selectedCountry} onChange={setSelectedCountry}>
-          <TabsHeader>
-            {countries.map(({ label, value }) => (
-              <Tab key={value} value={value}>
-                {label}
-              </Tab>
+      {/* Donations Cards */}
+      <div className="mt-8 px-4 md:px-10 pb-8">
+        {loading ? (
+          <p className="text-center text-gray-700 text-lg">Loading donations...</p>
+        ) : donations.length === 0 ? (
+          <p className="text-center text-gray-700 text-lg">No donations found</p>
+        ) : (
+          <div className="grid bg-green-100 grid-cols-1 md:grid-cols-3 gap-6">
+            {donations.map((donation) => (
+              <DonationCard key={donation._id} donation={donation} />
             ))}
-          </TabsHeader>
-
-          <TabsBody>
-            {countries.map(({ value }) => (
-              <TabPanel key={value} value={value}>
-                {loading ? (
-                  <p>Loading donations...</p>
-                ) : donations.length === 0 ? (
-                  <p>No donations found for {value}</p>
-                ) : (
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    {donations.map((donation) => (
-                      <DonationCard key={donation._id} donation={donation} />
-                    ))}
-                  </div>
-                )}
-              </TabPanel>
-            ))}
-          </TabsBody>
-        </Tabs>
+          </div>
+        )}
       </div>
     </div>
   );

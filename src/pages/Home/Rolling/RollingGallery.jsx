@@ -102,8 +102,8 @@ const RollingGallery = ({
   };
 
   return (
-    <div className="relative py-10 w-full overflow-hidden ">
-        <h1 className="my-4 text-2xl font-bold text-center ">Our Volunteers in Action</h1>
+    <div id="event" className="relative py-10 w-full  overflow-hidden ">
+        <h1  className="my-4  text-xl md:text-4xl font-bold text-center ">Our Volunteers in Action</h1>
 
       <div className="flex h-full items-center justify-center [perspective:1000px] [transform-style:preserve-3d]">
         <motion.div

@@ -74,9 +74,9 @@ const ApplyVolunteer = () => {
   if (!post) return <div className="text-center mt-10">Loading...</div>;
 
   return (
-    <form onSubmit={handleRequest} className="flex justify-center my-10">
+    <form onSubmit={handleRequest} className="flex bg-teal-900  justify-center  py-10">
       <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-full max-w-2xl border p-6">
-        <legend className="fieldset-legend  font-bold text-4xl">Want to be a Volunteer!</legend>
+        <legend className="fieldset-legend bg-teal-500 font-bold text-4xl">Want to be a Volunteer!</legend>
 
        
         <label className="label">Title</label>
@@ -130,7 +130,7 @@ const ApplyVolunteer = () => {
     No More Volunteers Needed
   </button>
 ) : (
-  <button type="submit" className="btn btn-primary w-full mt-4">
+  <button type="submit" className="btn bg-green-300 text-teal-900 rounded hover:bg-teal-700 hover:text-green-200 w-full mt-4">
     Request
   </button>
 )}
