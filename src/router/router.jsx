@@ -37,13 +37,13 @@ const router = createBrowserRouter([
         {
             path: '/volunteer/:id',
             Component: VolunteerDetails,
-            loader: ({params}) => fetch(`http://localhost:5000/volunteer/${params.id}`)
+            loader: ({params}) => fetch(`https://volunteer-server-blush.vercel.app/volunteer/${params.id}`)
         },
         
         {
           path: '/allNeeds',
           loader: async () => {
-           const res = await fetch('http://localhost:5000/volunteer');
+           const res = await fetch('https://volunteer-server-blush.vercel.app/volunteer');
             return res.json();
 },
           element: <PrivateRoute>

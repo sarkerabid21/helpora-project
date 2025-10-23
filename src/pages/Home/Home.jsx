@@ -9,7 +9,7 @@ import loadingLottie from '../../assets/loading.json';
 import Lottie from 'lottie-react';
 
 const Home = () => {
-  const volunteerPromise = fetch('http://localhost:5000/volunteer', {
+  const volunteerPromise = fetch('https://volunteer-server-blush.vercel.app/volunteer', {
     credentials: 'include'
   }).then(res => res.json());
 

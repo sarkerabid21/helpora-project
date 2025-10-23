@@ -15,7 +15,7 @@ const UpdatePost = () => {
   const [deadline, setDeadline] = useState(new Date());
 
   useEffect(() => {
-    fetch(`http://localhost:5000/volunteer/${id}`)
+    fetch(`https://volunteer-server-blush.vercel.app/volunteer/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setPost(data);
@@ -39,7 +39,7 @@ const UpdatePost = () => {
       organizerEmail: user.email,
     };
 
-    fetch(`http://localhost:5000/volunteer/${id}`, {
+    fetch(`https://volunteer-server-blush.vercel.app/volunteer/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

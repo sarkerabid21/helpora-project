@@ -13,7 +13,7 @@ function DonationCard({ donation }) {
     }
 
     try {
-      const res = await fetch("http://localhost:5000/create-payment", {
+      const res = await fetch("https://volunteer-server-blush.vercel.app/create-payment", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -89,7 +89,7 @@ const Donations = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch("http://localhost:5000/donations") // সব দেশের ডেটা একসাথে
+    fetch("https://volunteer-server-blush.vercel.app/donations") // সব দেশের ডেটা একসাথে
       .then((res) => res.json())
       .then((data) => {
         setDonations(data);

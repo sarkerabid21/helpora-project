@@ -1,5 +1,5 @@
 export const myRequestPromise = email =>
-  fetch(`http://localhost:5000/myRequests?email=${email}`, {
+  fetch(`https://volunteer-server-blush.vercel.app/myRequests?email=${email}`, {
     method: 'GET',
     credentials: 'include', // Send cookies!
     headers: {
