@@ -18,6 +18,11 @@ import Error from "../pages/Shared/Error";
 import Faq from "../pages/Shared/Faq";
 import AboutUs from "../pages/Shared/AboutUs";
 import Donations from "../pages/Shared/Donations";
+import DonorInsights from "../pages/Shared/DonorList/DonorInsights";
+import PaymentSuccess from "../pages/Shared/PaymentSuccess";
+import PaymentFailed from "../pages/Shared/PaymentFailed";
+import PaymentCancelled from "../pages/Shared/PaymentCancelled";
+
 
 
 const router = createBrowserRouter([
@@ -32,13 +37,13 @@ const router = createBrowserRouter([
         {
             path: '/volunteer/:id',
             Component: VolunteerDetails,
-            loader: ({params}) => fetch(`https://volunteer-servers.vercel.app/volunteer/${params.id}`)
+            loader: ({params}) => fetch(`http://localhost:5000/volunteer/${params.id}`)
         },
         
         {
           path: '/allNeeds',
           loader: async () => {
-           const res = await fetch('https://volunteer-servers.vercel.app/volunteer');
+           const res = await fetch('http://localhost:5000/volunteer');
             return res.json();
 },
           element: <PrivateRoute>
@@ -82,9 +87,17 @@ const router = createBrowserRouter([
             Component: Faq
 
         },
+         { path: '/paymentsuccess', Component: PaymentSuccess },
+      { path: '/paymentfailed', Component: PaymentFailed },
+      { path: '/paymentcancelled', Component: PaymentCancelled },
         {
             path: '/donations',
             Component: Donations
+
+        },
+        {
+            path: '/donnorlist',
+            Component: DonorInsights
 
         },
         {

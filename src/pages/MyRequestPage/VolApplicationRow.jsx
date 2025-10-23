@@ -14,7 +14,7 @@ const VolApplicationRow = ({ application, index, refetch }) => {
       confirmButtonText: 'Yes, cancel it!'
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://volunteer-servers.vercel.app/myRequests/${_id}`, {
+        fetch(`http://localhost:5000/myRequests/${_id}`, {
           method: 'DELETE',
           credentials: 'include'
         })

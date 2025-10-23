@@ -16,7 +16,7 @@ const AllVolNeeds = () => {
   //     .then(data => setVolunteerNeeds(data));
   // }, [searchText]);
 useEffect(() => {
-  fetch(`https://volunteer-servers.vercel.app/volunteer?search=${searchText}`)
+  fetch(`http://localhost:5000/volunteer?search=${searchText}`)
     .then(res => res.json())
     .then(data => {
       // deadline অনুযায়ী ascending order

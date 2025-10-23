@@ -53,6 +53,7 @@ const Navbar = () => {
           <li><PagesMenu /></li>
           <li><NavLink to="/allNeeds">All Needs</NavLink></li>
           <li><NavLink to="/donations">Donations</NavLink></li>
+          <li><NavLink to="/donnorlist">Donorlist</NavLink></li>
           {user && (
             <>
               <li><NavLink to="/addNeeds">Add Needs</NavLink></li>
@@ -64,31 +65,50 @@ const Navbar = () => {
 
       {/* Right: Actions */}
       <div className="navbar-end flex items-center gap-3">
-        {user ? (
-          <>
-            <details className="dropdown hidden lg:flex">
-              <summary className="btn p-0 w-10 h-10 min-h-0 rounded-full border-0 overflow-hidden">
-                {user?.photoURL && <img src={user.photoURL} alt="profile" />}
-              </summary>
-              <ul className="menu dropdown-content bg-base-100 rounded-box w-64 p-2 shadow-sm mt-2 z-[1000]">
-                <li><span className="block text-sm">{user?.displayName}</span></li>
-                <li><Link onClick={handleSignOut}>Sign out</Link></li>
-              </ul>
-            </details>
-            <h1 className="text-teal-800 font-bold dark:text-green-200">
-            HELPORA
-          </h1>
-          </>
-        ) : (
-          <>
-            <NavLink className="text-green-950 dark:text-green-200 btn" to="/signin">Sign In</NavLink>
-            <NavLink className="text-green-950 dark:text-green-200 btn" to="/register">Register</NavLink>
-          </>
-        )}
-        <div className="p-1 hidden lg:block md:block bg-yellow-300 dark:bg-purple-700 rounded-full">
-          <ThemeToggle className="text-green-950 dark:text-green-200 cursor-pointer" />
+  {user ? (
+    <>
+      <div className="dropdown dropdown-end hidden lg:block">
+        <div
+          tabIndex={0}
+          role="button"
+          className="btn p-0 w-10 h-10 min-h-0 rounded-full border-0 overflow-hidden"
+        >
+          {user?.photoURL ? (
+            <img src={user.photoURL} alt="profile" />
+          ) : (
+            <img src="/default-avatar.png" alt="default" />
+          )}
         </div>
+        <ul
+          tabIndex={0}
+          className="menu dropdown-content bg-base-100 rounded-box w-52 p-2 shadow z-[1000]"
+        >
+          <li>
+            <span className="font-semibold text-sm">{user?.displayName}</span>
+          </li>
+          <li>
+            <button onClick={handleSignOut}className="btn bg-red-400" >Sign out</button>
+          </li>
+        </ul>
       </div>
+
+      <h1 className="text-teal-800 font-bold dark:text-green-200">HELPORA</h1>
+    </>
+  ) : (
+    <>
+      <NavLink className="text-green-950 dark:text-green-200 btn" to="/signin">
+        Sign In
+      </NavLink>
+      <NavLink className="text-green-950 dark:text-green-200 btn" to="/register">
+        Register
+      </NavLink>
+    </>
+  )}
+
+  <div className="p-1 hidden lg:block md:block bg-yellow-300 dark:bg-purple-700 rounded-full">
+    <ThemeToggle className="text-green-950 dark:text-green-200 cursor-pointer" />
+  </div>
+</div>
 
       {/* Mobile Menu Dropdown */}
       {mobileOpen && (

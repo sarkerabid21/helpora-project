@@ -1,7 +1,41 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router";
 
+
+
 function DonationCard({ donation }) {
+  const [amount, setAmount] = useState("");
+
+  const handleDonate = async () => {
+    if (!amount || isNaN(amount) || amount <= 0) {
+      alert("Please enter a valid donation amount!");
+      return;
+    }
+
+    try {
+      const res = await fetch("http://localhost:5000/create-payment", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          donationId: donation._id,
+          amount: parseFloat(amount),
+          donorName: "Abid Sarker",
+          donorEmail: "abid@example.com",
+        }),
+      });
+
+      const data = await res.json();
+      if (data.url) {
+        window.location.replace(data.url);
+      } else {
+        alert("Failed to start payment!");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Error connecting to payment system.");
+    }
+  };
+
   return (
     <div className="border bg-green-100 rounded shadow p-4 flex flex-col">
       <img
@@ -11,16 +45,40 @@ function DonationCard({ donation }) {
       />
       <h3 className="mt-3 font-bold text-lg">{donation.title}</h3>
       <p className="text-sm text-gray-600">{donation.category}</p>
+
       <div className="mt-2">
         <p>
           Raised: <strong>{donation.raised}</strong> / Goal: <strong>{donation.goal}</strong>
         </p>
         <p>Progress: {donation.progress_percent}%</p>
-        <p className="italic mt-1 text-sm text-gray-500">Country: {donation.country}</p>
+        <p className="italic mt-1 text-sm text-gray-500">
+          Country: {donation.country}
+        </p>
+      </div>
+
+      <div className="mt-3 flex flex-col gap-2">
+        <input
+          type="number"
+          placeholder="Enter amount (৳)"
+          value={amount}
+          onChange={(e) => setAmount(e.target.value)}
+          className="border p-2 rounded w-full"
+        />
+        <button
+          onClick={handleDonate}
+          className="btn bg-amber-300 m-4 shadow-accent"
+        >
+          Donate
+        </button>
       </div>
     </div>
   );
 }
+
+
+
+
+
 
 const Donations = () => {
   const location = useLocation();
@@ -31,7 +89,7 @@ const Donations = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch("https://volunteer-servers.vercel.app/donations") // সব দেশের ডেটা একসাথে
+    fetch("http://localhost:5000/donations") // সব দেশের ডেটা একসাথে
       .then((res) => res.json())
       .then((data) => {
         setDonations(data);
